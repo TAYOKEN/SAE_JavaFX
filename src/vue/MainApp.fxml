@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane fx:id="mainBorderPane" xmlns:fx="http://javafx.com/fxml" fx:controller="controleur.MainController">
+    <left>
+        <VBox spacing="10" style="-fx-padding: 10;">
+            <Button text="Accueil" onAction="#handleAccueil"/>
+            <Button text="Parcourir" onAction="#handleParcourir"/>
+            <Button text="Déconnexion" onAction="#handleLogout"/>
+        </VBox>
+    </left>
+    <center>
+    </center>
+</BorderPane>
