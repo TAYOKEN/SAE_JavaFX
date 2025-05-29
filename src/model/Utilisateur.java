@@ -1,39 +1,62 @@
 package model;
 
 public class Utilisateur {
-    private String username;
-    private String motDePasse;
+    private String nomUtilisateur;
     private String email;
+    private String motDePasse;
 
-    public Utilisateur(String username, String motDePasse, String email) {
-        this.username = username;
-        this.motDePasse = motDePasse;
+    /**
+     * Constructeur de la classe Utilisateur
+     * @param nomUtilisateur Le nom d'utilisateur
+     * @param email L'adresse email
+     * @param motDePasse Le mot de passe
+     */
+    public Utilisateur(String nomUtilisateur, String email, String motDePasse) {
+        this.nomUtilisateur = nomUtilisateur;
         this.email = email;
+        this.motDePasse = motDePasse;
     }
 
-    public String getUsername() {
-        return username;
+    /**
+     * Vérifie les identifiants de connexion
+     * @param nomUtilisateur Le nom d'utilisateur saisi
+     * @param motDePasse Le mot de passe saisi
+     * @return true si les identifiants sont corrects, false sinon
+     */
+    public boolean verifierIdentifiants(String nomUtilisateur, String motDePasse) {
+        return this.nomUtilisateur.equals(nomUtilisateur) && this.motDePasse.equals(motDePasse);
     }
 
-    public String getMotDePasse() {
-        return motDePasse;
+    // Getters et Setters
+    public String getNomUtilisateur() {
+        return nomUtilisateur;
+    }
+
+    public void setNomUtilisateur(String nomUtilisateur) {
+        this.nomUtilisateur = nomUtilisateur;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public boolean verifierIdentifiants(String username, String motDePasse) {
-        return this.username.equals(username) && this.motDePasse.equals(motDePasse);
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public static boolean verifierFormatEmail(String email) {
-        return email != null && email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$");
+    public String getMotDePasse() {
+        return motDePasse;
     }
 
-    public boolean estValide() {
-        return username != null && !username.isEmpty()
-            && motDePasse != null && !motDePasse.isEmpty()
-            && verifierFormatEmail(email);
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" +
+                "nomUtilisateur='" + nomUtilisateur + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

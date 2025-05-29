@@ -28,8 +28,6 @@ public class RegisterPageController {
 
         if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
             statusLabel.setText("Tous les champs sont requis.");
-        } else if (!Utilisateur.verifierFormatEmail(email)) {
-            statusLabel.setText("Format d'email invalide.");
         } else {
             Utilisateur nouveau = new Utilisateur(username, password, email);
             statusLabel.setText("Inscription réussie !");
