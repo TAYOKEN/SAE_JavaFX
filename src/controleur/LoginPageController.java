@@ -114,20 +114,18 @@ public class LoginPageController {
      */
     private void loadMainPage() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Menu.fxml"));
             Parent root = loader.load();
-            
             Stage stage = (Stage) connexionButton.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Application Principale");
-            
+            stage.setScene(new Scene(root));
+            stage.show();
         } catch (IOException e) {
-            errorLabel.setText("Impossible de charger la page principale.");
+            errorLabel.setText("Erreur lors du chargement du menu.");
             errorLabel.setStyle("-fx-text-fill: red;");
             e.printStackTrace();
         }
     }
+
 
     /**
      * Méthode d'initialisation (optionnelle)

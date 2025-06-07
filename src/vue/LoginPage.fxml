@@ -21,6 +21,7 @@
 <TextField fx:id="identifiantField" prefHeight="26.0" prefWidth="166.0" promptText="Identifiant" />
 <Label text="Mot de passe :" textFill="#bf2525" />
 <PasswordField fx:id="motDePasseField" promptText="Mot de passe" />
+<Label fx:id="errorLabel" textFill="red" />
 </children>
 </VBox>
 </center>
