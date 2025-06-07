@@ -1,212 +1,319 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
+<?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="PizzaSelectorController"
-      prefHeight="600" prefWidth="450"
-      style="-fx-background-color: #f9e8c0;">
-
-    <!-- Forme Section -->
-    <VBox spacing="10">
-        <padding>
-            <Insets top="15" bottom="15" left="15" right="15"/>
-        </padding>
-
-        <Label text="Forme :" 
-               style="-fx-text-fill: #5c5c8a; -fx-font-weight: bold;"/>
-        
-        <HBox spacing="15" alignment="CENTER">
-            <!-- Rectangle -->
-            <StackPane style="-fx-background-color: #fad889; -fx-background-radius: 10;">
-                <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
-                </padding>
-                <VBox alignment="CENTER" spacing="10">
-                    <StackPane prefWidth="100" prefHeight="100">
-                        <Rectangle width="80" height="80" fill="white" arcWidth="10" arcHeight="10"/>
-                    </StackPane>
-                    <Label text="Rectangle" style="-fx-text-fill: #5c5c8a;"/>
-                </VBox>
-            </StackPane>
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox spacing="25.0" style="-fx-background-color: #F5E6D3; -fx-padding: 30;">
+         <children>
+            <!-- Section Forme -->
+            <VBox spacing="15.0">
+               <children>
+                  <Label text="Forme :" textFill="#4A4A4A">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox spacing="20.0" alignment="CENTER_LEFT">
+                     <children>
+                        <Button fx:id="rectangleBtn" style="-fx-background-color: #E6B85C; -fx-background-radius: 8; -fx-padding: 15; -fx-border-width: 0;">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Pane prefHeight="80.0" prefWidth="80.0" 
+                                          style="-fx-background-color: #F9F1E6; -fx-background-radius: 5;">
+                                       <children>
+                                          <Region layoutX="20.0" layoutY="20.0" prefHeight="40.0" prefWidth="40.0" 
+                                                  style="-fx-background-color: #E6B85C; -fx-background-radius: 3;" />
+                                       </children>
+                                    </Pane>
+                                    <Label text="Rectangle" textFill="#4A4A4A">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                        
+                        <Button fx:id="triangleBtn" style="-fx-background-color: #E6B85C; -fx-background-radius: 8; -fx-padding: 15; -fx-border-width: 0;">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Pane prefHeight="80.0" prefWidth="80.0" 
+                                          style="-fx-background-color: #F9F1E6; -fx-background-radius: 5;">
+                                       <children>
+                                          <Polygon fill="#E6B85C" layoutX="40.0" layoutY="25.0" 
+                                                   points="-20.0, 30.0, 0.0, 0.0, 20.0, 30.0" />
+                                       </children>
+                                    </Pane>
+                                    <Label text="Triangle" textFill="#4A4A4A">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                        
+                        <Button fx:id="circleBtn" style="-fx-background-color: #E6B85C; -fx-background-radius: 8; -fx-padding: 15; -fx-border-width: 0;">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Pane prefHeight="80.0" prefWidth="80.0" 
+                                          style="-fx-background-color: #F9F1E6; -fx-background-radius: 5;">
+                                       <children>
+                                          <Region layoutX="20.0" layoutY="20.0" prefHeight="40.0" prefWidth="40.0" 
+                                                  style="-fx-background-color: #E6B85C; -fx-background-radius: 20;" />
+                                       </children>
+                                    </Pane>
+                                    <Label text="Cercle" textFill="#4A4A4A">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
             
-            <!-- Triangle -->
-            <StackPane style="-fx-background-color: #fad889; -fx-background-radius: 10;">
-                <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
-                </padding>
-                <VBox alignment="CENTER" spacing="10">
-                    <StackPane prefWidth="100" prefHeight="100">
-                        <Polygon points="50,0 0,80 100,80" fill="white"/>
-                    </StackPane>
-                    <Label text="Triangle" style="-fx-text-fill: #5c5c8a;"/>
-                </VBox>
-            </StackPane>
+            <!-- Section Pâte -->
+            <VBox spacing="15.0">
+               <children>
+                  <Label text="Pâte :" textFill="#4A4A4A">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox spacing="20.0" alignment="CENTER_LEFT">
+                     <children>
+                        <Button fx:id="normaleBtn" style="-fx-background-color: #E6B85C; -fx-background-radius: 8; -fx-padding: 15; -fx-border-width: 0;">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Pane prefHeight="80.0" prefWidth="80.0" 
+                                          style="-fx-background-color: #F9F1E6; -fx-background-radius: 5;">
+                                       <children>
+                                          <Region layoutX="15.0" layoutY="35.0" prefHeight="10.0" prefWidth="50.0" 
+                                                  style="-fx-background-color: #E6B85C; -fx-background-radius: 5;" />
+                                       </children>
+                                    </Pane>
+                                    <Label text="Normale" textFill="#4A4A4A">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                        
+                        <Button fx:id="fineBtn" style="-fx-background-color: #E6B85C; -fx-background-radius: 8; -fx-padding: 15; -fx-border-width: 0;">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Pane prefHeight="80.0" prefWidth="80.0" 
+                                          style="-fx-background-color: #F9F1E6; -fx-background-radius: 5;">
+                                       <children>
+                                          <Region layoutX="15.0" layoutY="35.0" prefHeight="6.0" prefWidth="50.0" 
+                                                  style="-fx-background-color: #E6B85C; -fx-background-radius: 3;" />
+                                       </children>
+                                    </Pane>
+                                    <Label text="Fine" textFill="#4A4A4A">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                        
+                        <Button fx:id="grosseBtn" style="-fx-background-color: #E6B85C; -fx-background-radius: 8; -fx-padding: 15; -fx-border-width: 0;">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Pane prefHeight="80.0" prefWidth="80.0" 
+                                          style="-fx-background-color: #F9F1E6; -fx-background-radius: 5;">
+                                       <children>
+                                          <Region layoutX="10.0" layoutY="32.0" prefHeight="16.0" prefWidth="60.0" 
+                                                  style="-fx-background-color: #E6B85C; -fx-background-radius: 8;" />
+                                       </children>
+                                    </Pane>
+                                    <Label text="Grosse" textFill="#4A4A4A">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
             
-            <!-- Circle -->
-            <StackPane style="-fx-background-color: #fad889; -fx-background-radius: 10;">
-                <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
-                </padding>
-                <VBox alignment="CENTER" spacing="10">
-                    <StackPane prefWidth="100" prefHeight="100">
-                        <Circle radius="40" fill="white"/>
-                    </StackPane>
-                    <Label text="Cercle" style="-fx-text-fill: #5c5c8a;"/>
-                </VBox>
-            </StackPane>
-        </HBox>
-    </VBox>
-    
-    <!-- Pâte Section -->
-    <VBox spacing="10">
-        <padding>
-            <Insets top="5" bottom="15" left="15" right="15"/>
-        </padding>
-
-        <Label text="Pâte :" 
-               style="-fx-text-fill: #5c5c8a; -fx-font-weight: bold;"/>
-        
-        <HBox spacing="15" alignment="CENTER">
-            <!-- Normale -->
-            <StackPane style="-fx-background-color: #fad889; -fx-background-radius: 10;">
-                <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
-                </padding>
-                <VBox alignment="CENTER" spacing="10">
-                    <StackPane prefWidth="100" prefHeight="100" alignment="CENTER">
-                        <Rectangle width="80" height="15" fill="white" arcWidth="15" arcHeight="15"/>
-                    </StackPane>
-                    <Label text="Normale" style="-fx-text-fill: #5c5c8a;"/>
-                </VBox>
-            </StackPane>
+            <!-- Section Taille -->
+            <VBox spacing="15.0">
+               <children>
+                  <Label text="Taille :" textFill="#4A4A4A">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox spacing="20.0" alignment="CENTER_LEFT">
+                     <children>
+                        <Button fx:id="petiteBtn" style="-fx-background-color: #E6B85C; -fx-background-radius: 8; -fx-padding: 15; -fx-border-width: 0;">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Pane prefHeight="80.0" prefWidth="80.0" 
+                                          style="-fx-background-color: #F9F1E6; -fx-background-radius: 5;">
+                                       <children>
+                                          <Region layoutX="25.0" layoutY="25.0" prefHeight="30.0" prefWidth="30.0" 
+                                                  style="-fx-background-color: #E6B85C; -fx-background-radius: 15;" />
+                                       </children>
+                                    </Pane>
+                                    <Label text="Petite" textFill="#4A4A4A">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                        
+                        <Button fx:id="moyenneBtn" style="-fx-background-color: #E6B85C; -fx-background-radius: 8; -fx-padding: 15; -fx-border-width: 0;">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Pane prefHeight="80.0" prefWidth="80.0" 
+                                          style="-fx-background-color: #F9F1E6; -fx-background-radius: 5;">
+                                       <children>
+                                          <Region layoutX="20.0" layoutY="20.0" prefHeight="40.0" prefWidth="40.0" 
+                                                  style="-fx-background-color: #E6B85C; -fx-background-radius: 20;" />
+                                       </children>
+                                    </Pane>
+                                    <Label text="Moyenne" textFill="#4A4A4A">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                        
+                        <Button fx:id="grandeBtn" style="-fx-background-color: #E6B85C; -fx-background-radius: 8; -fx-padding: 15; -fx-border-width: 0;">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Pane prefHeight="80.0" prefWidth="80.0" 
+                                          style="-fx-background-color: #F9F1E6; -fx-background-radius: 5;">
+                                       <children>
+                                          <Region layoutX="15.0" layoutY="15.0" prefHeight="50.0" prefWidth="50.0" 
+                                                  style="-fx-background-color: #E6B85C; -fx-background-radius: 25;" />
+                                       </children>
+                                    </Pane>
+                                    <Label text="Grande" textFill="#4A4A4A">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
             
-            <!-- Fine -->
-            <StackPane style="-fx-background-color: #fad889; -fx-background-radius: 10;">
-                <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
-                </padding>
-                <VBox alignment="CENTER" spacing="10">
-                    <StackPane prefWidth="100" prefHeight="100" alignment="CENTER">
-                        <Rectangle width="80" height="8" fill="white" arcWidth="8" arcHeight="8"/>
-                    </StackPane>
-                    <Label text="Fine" style="-fx-text-fill: #5c5c8a;"/>
-                </VBox>
-            </StackPane>
-            
-            <!-- Crust -->
-            <StackPane style="-fx-background-color: #fad889; -fx-background-radius: 10;">
-                <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
-                </padding>
-                <VBox alignment="CENTER" spacing="10">
-                    <StackPane prefWidth="100" prefHeight="100" alignment="CENTER">
-                        <Rectangle width="80" height="15" fill="white" arcWidth="20" arcHeight="20"/>
-                    </StackPane>
-                    <Label text="Crust" style="-fx-text-fill: #5c5c8a;"/>
-                </VBox>
-            </StackPane>
-        </HBox>
-    </VBox>
-    
-    <!-- Taille Section -->
-    <VBox spacing="10">
-        <padding>
-            <Insets top="5" bottom="15" left="15" right="15"/>
-        </padding>
-
-        <Label text="Taille :" 
-               style="-fx-text-fill: #5c5c8a; -fx-font-weight: bold;"/>
-        
-        <HBox spacing="15" alignment="CENTER">
-            <!-- Petite -->
-            <StackPane style="-fx-background-color: #fad889; -fx-background-radius: 10;">
-                <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
-                </padding>
-                <VBox alignment="CENTER" spacing="10">
-                    <StackPane prefWidth="100" prefHeight="100" alignment="CENTER">
-                        <Circle radius="25" fill="white"/>
-                    </StackPane>
-                    <Label text="Petite" style="-fx-text-fill: #5c5c8a;"/>
-                </VBox>
-            </StackPane>
-            
-            <!-- Moyenne -->
-            <StackPane style="-fx-background-color: #fad889; -fx-background-radius: 10;">
-                <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
-                </padding>
-                <VBox alignment="CENTER" spacing="10">
-                    <StackPane prefWidth="100" prefHeight="100" alignment="CENTER">
-                        <Circle radius="35" fill="white"/>
-                    </StackPane>
-                    <Label text="Moyenne" style="-fx-text-fill: #5c5c8a;"/>
-                </VBox>
-            </StackPane>
-            
-            <!-- Grande -->
-            <StackPane style="-fx-background-color: #fad889; -fx-background-radius: 10;">
-                <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
-                </padding>
-                <VBox alignment="CENTER" spacing="10">
-                    <StackPane prefWidth="100" prefHeight="100" alignment="CENTER">
-                        <Circle radius="45" fill="white"/>
-                    </StackPane>
-                    <Label text="Grande" style="-fx-text-fill: #5c5c8a;"/>
-                </VBox>
-            </StackPane>
-        </HBox>
-    </VBox>
-    
-    <!-- Sauce Section -->
-    <VBox spacing="10">
-        <padding>
-            <Insets top="5" bottom="15" left="15" right="15"/>
-        </padding>
-
-        <Label text="Sauce :" 
-               style="-fx-text-fill: #5c5c8a; -fx-font-weight: bold;"/>
-        
-        <HBox spacing="15" alignment="CENTER">
-            <!-- Sauce Tomate -->
-            <StackPane style="-fx-background-color: #fad889; -fx-background-radius: 10;">
-                <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
-                </padding>
-                <VBox alignment="CENTER" spacing="10">
-                    <StackPane prefWidth="100" prefHeight="100" alignment="CENTER">
-                        <StackPane>
-                            <Circle radius="40" fill="#e63946"/>
-                            <Line startX="-10" startY="-30" endX="0" endY="-45" stroke="#4a7c59" strokeWidth="3"/>
-                        </StackPane>
-                    </StackPane>
-                    <Label text="Sauce Tomate" style="-fx-text-fill: #5c5c8a;"/>
-                </VBox>
-            </StackPane>
-            
-            <!-- Sauce Crème -->
-            <StackPane style="-fx-background-color: #fad889; -fx-background-radius: 10;">
-                <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
-                </padding>
-                <VBox alignment="CENTER" spacing="10">
-                    <StackPane prefWidth="100" prefHeight="100" alignment="CENTER">
-                        <Group>
-                            <Rectangle width="40" height="60" fill="white" arcWidth="10" arcHeight="10"/>
-                            <Rectangle x="40" width="15" height="15" fill="#4ba3e3" arcWidth="5" arcHeight="5"/>
-                            <Line startX="55" startY="7" endX="65" endY="25" stroke="#4ba3e3" strokeWidth="3"/>
-                        </Group>
-                    </StackPane>
-                    <Label text="Sauce crème" style="-fx-text-fill: #5c5c8a;"/>
-                </VBox>
-            </StackPane>
-        </HBox>
-    </VBox>
-</VBox>
+            <!-- Section Sauce -->
+            <VBox spacing="15.0">
+               <children>
+                  <Label text="Sauce :" textFill="#4A4A4A">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox spacing="20.0" alignment="CENTER_LEFT">
+                     <children>
+                        <Button fx:id="sauceTomateBtn" style="-fx-background-color: #E6B85C; -fx-background-radius: 8; -fx-padding: 15; -fx-border-width: 0;">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Pane prefHeight="80.0" prefWidth="80.0" 
+                                          style="-fx-background-color: #F9F1E6; -fx-background-radius: 5;">
+                                       <children>
+                                          <!-- Tomate stylisée -->
+                                          <Region layoutX="30.0" layoutY="20.0" prefHeight="35.0" prefWidth="35.0" 
+                                                  style="-fx-background-color: #E74C3C; -fx-background-radius: 17;" />
+                                          <Region layoutX="37.0" layoutY="15.0" prefHeight="8.0" prefWidth="8.0" 
+                                                  style="-fx-background-color: #27AE60; -fx-background-radius: 4;" />
+                                          <Region layoutX="40.0" layoutY="12.0" prefHeight="6.0" prefWidth="2.0" 
+                                                  style="-fx-background-color: #27AE60;" />
+                                       </children>
+                                    </Pane>
+                                    <Label text="Sauce Tomate" textFill="#4A4A4A">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                        
+                        <Button fx:id="sauceCremeBtn" style="-fx-background-color: #E6B85C; -fx-background-radius: 8; -fx-padding: 15; -fx-border-width: 0;">
+                           <graphic>
+                              <VBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Pane prefHeight="80.0" prefWidth="80.0" 
+                                          style="-fx-background-color: #F9F1E6; -fx-background-radius: 5;">
+                                       <children>
+                                          <!-- Bol de sauce crème -->
+                                          <Region layoutX="25.0" layoutY="35.0" prefHeight="25.0" prefWidth="30.0" 
+                                                  style="-fx-background-color: #ECF0F1; -fx-background-radius: 0 0 15 15;" />
+                                          <Region layoutX="28.0" layoutY="25.0" prefHeight="15.0" prefWidth="24.0" 
+                                                  style="-fx-background-color: #F8F9FA; -fx-background-radius: 12 12 0 0;" />
+                                          <!-- Cuillère -->
+                                          <Region layoutX="45.0" layoutY="20.0" prefHeight="2.0" prefWidth="12.0" 
+                                                  style="-fx-background-color: #3498DB;" />
+                                          <Region layoutX="55.0" layoutY="18.0" prefHeight="6.0" prefWidth="4.0" 
+                                                  style="-fx-background-color: #3498DB; -fx-background-radius: 2;" />
+                                       </children>
+                                    </Pane>
+                                    <Label text="Sauce crème" textFill="#4A4A4A">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.PizzaController" style="-fx-background-color: #f4e2c9;">
+    
+    <!-- TOP - Titre -->
+    <top>
+        <Label text="Personnalisation de votre Pizza" 
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-padding: 20 0 20 0;" 
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <!-- CENTER - Options -->
+    <center>
+        <VBox spacing="20" padding="Insets(20, 40, 20, 40)">
+            
+            <!-- Section Forme -->
+            <VBox spacing="10">
+                <Label text="Forme :" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="70" fitWidth="70">
+                            <image>
+                                <Image url="@rectangle.png"/>
+                            </image>
+                        </ImageView>
+                        <Button text="Rectangle" style="-fx-padding: 5 10 5 10;"/>
+                    </VBox>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="70" fitWidth="70">
+                            <image>
+                                <Image url="@triangle.png"/>
+                            </image>
+                        </ImageView>
+                        <Button text="Triangle" style="-fx-padding: 5 10 5 10;"/>
+                    </VBox>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="70" fitWidth="70">
+                            <image>
+                                <Image url="@cercle.png"/>
+                            </image>
+                        </ImageView>
+                        <Button text="Cercle" style="-fx-padding: 5 10 5 10;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Section Pâte -->
+            <VBox spacing="10">
+                <Label text="Pâte :" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <Button text="Normale" prefWidth="100"/>
+                    <Button text="Fine" prefWidth="100"/>
+                    <Button text="Crust" prefWidth="100"/>
+                </HBox>
+            </VBox>
+
+            <!-- Section Taille -->
+            <VBox spacing="10">
+                <Label text="Taille :" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <Button text="Petite" prefWidth="100"/>
+                    <Button text="Moyenne" prefWidth="100"/>
+                    <Button text="Grande" prefWidth="100"/>
+                </HBox>
+            </VBox>
+
+            <!-- Section Sauce -->
+            <VBox spacing="10">
+                <Label text="Sauce :" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <HBox spacing="40" alignment="CENTER_LEFT">
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="60" fitWidth="60">
+                            <image>
+                                <Image url="@sauce_tomate.png"/>
+                            </image>
+                        </ImageView>
+                        <Button text="Sauce Tomate"/>
+                    </VBox>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="60" fitWidth="60">
+                            <image>
+                                <Image url="@sauce_creme.png"/>
+                            </image>
+                        </ImageView>
+                        <Button text="Sauce Crème"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+        </VBox>
+    </center>
+
+    <!-- BOTTOM - Bouton de validation -->
+    <bottom>
+        <HBox alignment="CENTER" padding="Insets(20, 0, 20, 0)">
+            <Button text="Commander" style="-fx-font-size: 14px; -fx-padding: 10 20 10 20;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
