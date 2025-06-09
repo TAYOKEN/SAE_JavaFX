@@ -7,10 +7,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.geometry.Insets?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F4E3C1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.DragNDropTestController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #F4E3C1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.DragNDropTestController">
    <top>
-      <HBox prefHeight="56.0" prefWidth="562.0" style="-fx-background-color: #F4E3C1;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="56.0" prefWidth="700.0" style="-fx-background-color: #F4E3C1;" spacing="5.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets top="5.0" bottom="5.0" left="10.0" right="10.0" />
+         </padding>
          <children>
             <!-- Bouton crayon avec événement -->
             <Button fx:id="crayonButton" mnemonicParsing="false" onAction="#handleCrayonClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
@@ -22,7 +26,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleTomateClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+            <Button fx:id="tomateButton" mnemonicParsing="false" onAction="#handleTomateClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -31,7 +35,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleCremeClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+            <Button fx:id="cremeButton" mnemonicParsing="false" onAction="#handleCremeClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -40,7 +44,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleFromageRapeClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+            <Button fx:id="fromageRapeButton" mnemonicParsing="false" onAction="#handleFromageRapeClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -49,7 +53,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleMozzarellaClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+            <Button fx:id="mozzarellaButton" mnemonicParsing="false" onAction="#handleMozzarellaClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +62,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleBasilicClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+            <Button fx:id="basilicButton" mnemonicParsing="false" onAction="#handleBasilicClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -67,7 +71,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleViandeClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+            <Button fx:id="viandeButton" mnemonicParsing="false" onAction="#handleViandeClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -76,7 +80,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleChorizoClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+            <Button fx:id="chorizoButton" mnemonicParsing="false" onAction="#handleChorizoClick" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #fad489; -fx-border-color: #ffaa00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -103,7 +107,28 @@
       </VBox>
    </right>
    <bottom>
-      <HBox prefHeight="56.0" prefWidth="600.0" style="-fx-background-color: #F4E3C1;" BorderPane.alignment="CENTER" />
+      <!-- Barre d'actions en bas -->
+      <HBox prefHeight="60.0" prefWidth="700.0" style="-fx-background-color: #F4E3C1;" spacing="10.0" alignment="CENTER" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets top="5.0" bottom="5.0" left="10.0" right="10.0" />
+         </padding>
+         <children>
+            <!-- Bouton Retour/Annuler -->
+            <Button fx:id="retourButton" mnemonicParsing="false" onAction="#handleRetourClick" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #FFB347; -fx-border-color: #FF8C00; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Retour" />
+            
+            <!-- Bouton Tout Supprimer -->
+            <Button fx:id="toutSupprimerButton" mnemonicParsing="false" onAction="#handleToutSupprimerClick" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #FF6B6B; -fx-border-color: #FF4444; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-font-weight: bold; -fx-text-fill: white;" text="Tout Supprimer" />
+            
+            <!-- Espaceur pour séparer les groupes de boutons -->
+            <HBox HBox.hgrow="ALWAYS" />
+            
+            <!-- Bouton Sauvegarder -->
+            <Button fx:id="sauvegarderButton" mnemonicParsing="false" onAction="#handleSauvegarderClick" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #90EE90; -fx-border-color: #32CD32; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Sauvegarder" />
+            
+            <!-- Bouton Quitter -->
+            <Button fx:id="quitterButton" mnemonicParsing="false" onAction="#handleQuitterClick" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #D3D3D3; -fx-border-color: #A9A9A9; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Quitter" />
+         </children>
+      </HBox>
    </bottom>
    <center>
       <!-- Zone de dessin pour la pizza -->
