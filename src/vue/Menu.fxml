@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F4E3C1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="25.0" layoutY="42.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
+      <Pane fx:id="latest1" layoutX="25.0" layoutY="42.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
          <children>
             <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="13.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -23,7 +22,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="103.0" layoutY="42.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
+      <Pane fx:id="latest2" layoutX="103.0" layoutY="42.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
          <children>
             <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="13.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -32,7 +31,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="177.0" layoutY="42.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
+      <Pane fx:id="latest3" layoutX="177.0" layoutY="42.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
          <children>
             <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="13.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -41,7 +40,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="25.0" layoutY="110.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
+      <Pane fx:id="latest4" layoutX="25.0" layoutY="110.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
          <children>
             <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="13.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -50,7 +49,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="103.0" layoutY="110.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
+      <Pane fx:id="latest5" layoutX="103.0" layoutY="110.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
          <children>
             <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="13.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -59,7 +58,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="177.0" layoutY="110.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
+      <Pane fx:id="latest6" layoutX="177.0" layoutY="110.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
          <children>
             <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="13.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -68,7 +67,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="25.0" layoutY="176.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
+      <Pane fx:id="latest7" layoutX="25.0" layoutY="176.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
          <children>
             <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="13.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -77,7 +76,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="103.0" layoutY="176.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
+      <Pane fx:id="latest8" layoutX="103.0" layoutY="176.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
          <children>
             <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="13.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -86,7 +85,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="177.0" layoutY="176.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
+      <Pane fx:id="latest9" layoutX="177.0" layoutY="176.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
          <children>
             <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="13.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -95,7 +94,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Button layoutX="272.0" layoutY="38.0" mnemonicParsing="false" prefHeight="187.0" prefWidth="302.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" text="+" textFill="#9e0000">
+      <Button fx:id="newbutton" layoutX="272.0" layoutY="38.0" mnemonicParsing="false" prefHeight="187.0" prefWidth="302.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" text="+" textFill="#9e0000">
          <font>
             <Font name="System Bold Italic" size="90.0" />
          </font>
@@ -125,7 +124,7 @@
           <RowConstraints maxHeight="37.80002441406249" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;">
+            <Pane fx:id="trend1" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;">
                <children>
                   <ImageView fitHeight="56.0" fitWidth="81.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -139,7 +138,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" GridPane.columnIndex="2">
+            <Pane fx:id="trend2" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" GridPane.columnIndex="2">
                <children>
                   <ImageView fitHeight="56.0" fitWidth="81.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -153,7 +152,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="91.0" prefWidth="133.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" GridPane.columnIndex="4">
+            <Pane fx:id="trend3" prefHeight="91.0" prefWidth="133.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" GridPane.columnIndex="4">
                <children>
                   <ImageView fitHeight="56.0" fitWidth="81.0" layoutX="30.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -167,7 +166,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="86.0" prefWidth="153.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" GridPane.columnIndex="6">
+            <Pane fx:id="trend4" prefHeight="86.0" prefWidth="153.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" GridPane.columnIndex="6">
                <children>
                   <ImageView fitHeight="56.0" fitWidth="81.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>

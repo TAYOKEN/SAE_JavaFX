@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Button?>
 
-<BorderPane fx:id="mainBorderPane" xmlns:fx="http://javafx.com/fxml" fx:controller="controleur.MainController">
+<BorderPane fx:id="mainBorderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controleur.MainController">
     <left>
-        <VBox spacing="10" style="-fx-padding: 10;">
-            <Button text="Accueil" onAction="#handleAccueil"/>
-            <Button text="Parcourir" onAction="#handleParcourir"/>
-            <Button text="Déconnexion" onAction="#handleLogout"/>
+        <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: #bf2525;">
+            <Button onAction="#handleAccueil" style="-fx-background-color: FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);" text="Accueil" />
+            <Button onAction="#handleParcourir" style="-fx-background-color: FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);" text="Parcourir" />
+            <Button onAction="#handleLogout" style="-fx-background-color: FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);" text="Déconnexion" />
         </VBox>
     </left>
     <center>
