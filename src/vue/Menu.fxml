@@ -11,8 +11,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F4E3C1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" 
+            style="-fx-background-color: #F4E3C1;" 
+            xmlns="http://javafx.com/javafx/23.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controleur.MenuController">
+               <children>
       <Pane fx:id="latest1" layoutX="25.0" layoutY="42.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
          <children>
             <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="13.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -94,8 +99,11 @@
             </ImageView>
          </children>
       </Pane>
-      <Button fx:id="newbutton" layoutX="272.0" layoutY="38.0" mnemonicParsing="false" prefHeight="187.0" prefWidth="302.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" text="+" textFill="#9e0000">
-         <font>
+<Button fx:id="newbutton" onAction="#handleNewButtonClick" layoutX="272.0" layoutY="38.0" 
+        mnemonicParsing="false" prefHeight="187.0" prefWidth="302.0" 
+        style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" 
+        text="+" textFill="#9e0000">
+                 <font>
             <Font name="System Bold Italic" size="90.0" />
          </font>
       </Button>

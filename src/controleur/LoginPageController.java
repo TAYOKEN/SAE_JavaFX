@@ -72,7 +72,7 @@ public class LoginPageController {
     private void handlePasDeCompte(MouseEvent event) {
         try {
             // Charger la page d'inscription
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/RegisterPage.fxml"));
             Parent root = loader.load();
             
             // Obtenir la fenêtre actuelle

@@ -12,20 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F4E3C1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <VBox prefHeight="400.0" prefWidth="122.0" style="-fx-background-color: #bf2525;" BorderPane.alignment="CENTER">
-         <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label text="Label" />
-                  <Label text="Label" />
-                  <Label text="Label" />
-               </children>
-            </VBox>
-         </children>
-      </VBox>
+      <VBox prefHeight="400.0" prefWidth="1.0" style="-fx-background-color: #bf2525;" BorderPane.alignment="CENTER" />
    </left>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -77,7 +66,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: FAD489; -fx-border-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);" GridPane.columnIndex="4">
+                  <Pane prefHeight="122.0" prefWidth="168.0" style="-fx-background-color: FAD489; -fx-border-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);" GridPane.columnIndex="4">
                      <children>
                         <ImageView fitHeight="85.0" fitWidth="90.0" layoutX="27.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
