@@ -45,9 +45,7 @@ public class LoginPageController {
         handleLogin();
     }
 
-    /**
-     * Méthode de connexion basée sur votre code original
-     */
+
     @FXML
     private void handleLogin() {
         String username = identifiantField.getText();
