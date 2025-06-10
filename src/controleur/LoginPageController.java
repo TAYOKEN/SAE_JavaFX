@@ -32,6 +32,7 @@ public class LoginPageController {
 
     @FXML
     private Label errorLabel;
+    
 
     // Utilisateur de test avec le modèle Utilisateur
     private Utilisateur utilisateur = new Utilisateur("admin", "admin@admin.fr", "1234");

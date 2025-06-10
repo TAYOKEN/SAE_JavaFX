@@ -11,12 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
-            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" 
-            style="-fx-background-color: #F4E3C1;" 
-            xmlns="http://javafx.com/javafx/23.0.1" 
-            xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="controleur.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F4E3C1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.MenuController">
                <children>
       <Pane fx:id="latest1" layoutX="25.0" layoutY="42.0" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);">
          <children>
@@ -99,10 +94,7 @@
             </ImageView>
          </children>
       </Pane>
-<Button fx:id="newbutton" onAction="#handleNewButtonClick" layoutX="272.0" layoutY="38.0" 
-        mnemonicParsing="false" prefHeight="187.0" prefWidth="302.0" 
-        style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" 
-        text="+" textFill="#9e0000">
+<Button fx:id="newbutton" layoutX="272.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleNewButtonClick" prefHeight="187.0" prefWidth="302.0" style="-fx-background-color: #FAD489; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0); -fx-border-color: #9e0000;" text="+" textFill="#9e0000">
                  <font>
             <Font name="System Bold Italic" size="90.0" />
          </font>
@@ -190,10 +182,10 @@
             </Pane>
          </children>
       </GridPane>
-      <Label layoutX="526.0" layoutY="360.0" prefHeight="37.0" prefWidth="96.0" text="Plus..." textFill="#50569a" underline="true">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
+      <Label fx:id="PlusButton" layoutX="526.0" layoutY="360.0" prefHeight="37.0" prefWidth="96.0" text="Plus..." textFill="#50569a" underline="true" onMouseClicked="#handlePlus">
+   <font>
+      <Font size="17.0" />
+   </font>
+</Label>
    </children>
 </AnchorPane>

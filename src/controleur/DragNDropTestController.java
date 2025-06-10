@@ -20,7 +20,6 @@ import javafx.scene.Parent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import java.io.*;
 
 public class DragNDropTestController {
     
@@ -56,9 +55,6 @@ public class DragNDropTestController {
     private Button toutSupprimerButton;
     
     @FXML
-    private Button sauvegarderButton;
-    
-    @FXML
     private Button quitterButton;
     
     @FXML
@@ -78,32 +74,9 @@ public class DragNDropTestController {
     private boolean isDraggingSauce = false;
     private double lastSauceX = -1, lastSauceY = -1;
     
-    // Système d'historique pour l'annulation
-    private Stack<PizzaState> historyStack = new Stack<>();
+    // Système d'historique pour l'annulation (version simplifiée)
+    private Stack<List<Node>> historyStack = new Stack<>();
     private static final int MAX_HISTORY_SIZE = 20;
-    
-    // Classe pour sauvegarder l'état de la pizza
-    private static class PizzaState implements Serializable {
-        private static final long serialVersionUID = 1L;
-        public List<NodeData> nodes = new ArrayList<>();
-        public List<PolygonData> doughs = new ArrayList<>();
-    }
-    
-    // Classes pour sérialiser les données des formes
-    private static class NodeData implements Serializable {
-        private static final long serialVersionUID = 1L;
-        public String type;
-        public double x, y, width, height, radius;
-        public String fillColor, strokeColor;
-        public double strokeWidth, rotation, translateX, translateY;
-    }
-    
-    private static class PolygonData implements Serializable {
-        private static final long serialVersionUID = 1L;
-        public List<Double> points = new ArrayList<>();
-        public String fillColor, strokeColor;
-        public double strokeWidth;
-    }
     
     @FXML
     private void initialize() {
@@ -231,7 +204,7 @@ public class DragNDropTestController {
     private void handleRetourClick() {
         if (historyStack.size() > 1) {
             historyStack.pop(); // Enlever l'état actuel
-            PizzaState previousState = historyStack.peek();
+            List<Node> previousState = historyStack.peek();
             restoreState(previousState);
         } else {
             showAlert("Information", "Aucune action à annuler.", Alert.AlertType.INFORMATION);
@@ -252,61 +225,25 @@ public class DragNDropTestController {
     }
     
     @FXML
-    private void handleSauvegarderClick() {
-        try {
-            PizzaState currentState = getCurrentState();
-            
-            // Créer le dossier de sauvegarde s'il n'existe pas
-            File saveDir = new File("pizzas_sauvegardees");
-            if (!saveDir.exists()) {
-                saveDir.mkdirs();
-            }
-            
-            // Générer un nom de fichier unique
-            String fileName = "pizza_" + System.currentTimeMillis() + ".pizza";
-            File saveFile = new File(saveDir, fileName);
-            
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(saveFile))) {
-                oos.writeObject(currentState);
-                showAlert("Succès", "Pizza sauvegardée sous : " + fileName, Alert.AlertType.INFORMATION);
-            }
-        } catch (IOException e) {
-            showAlert("Erreur", "Erreur lors de la sauvegarde : " + e.getMessage(), Alert.AlertType.ERROR);
-        }
-    }
-    
-    @FXML
     private void handleQuitterClick() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Quitter");
-        alert.setContentText("Voulez-vous sauvegarder avant de quitter ?");
+        alert.setContentText("Voulez-vous vraiment quitter ?");
         
-        ButtonType sauvegarder = new ButtonType("Sauvegarder et quitter");
-        ButtonType quitterSansSauver = new ButtonType("Quitter sans sauvegarder");
-        ButtonType annuler = new ButtonType("Annuler");
-        
-        alert.getButtonTypes().setAll(sauvegarder, quitterSansSauver, annuler);
-        
-        ButtonType result = alert.showAndWait().orElse(annuler);
-        
-        if (result == sauvegarder) {
-            handleSauvegarderClick();
-            returnToMenu();
-        } else if (result == quitterSansSauver) {
+        if (alert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
             returnToMenu();
         }
-        // Si annuler, ne rien faire
     }
     
-    // Méthodes utilitaires pour la gestion de l'historique
+    // Méthodes utilitaires pour la gestion de l'historique (simplifiée)
     private void saveCurrentState() {
-        PizzaState currentState = getCurrentState();
+        List<Node> currentState = new ArrayList<>(drawingArea.getChildren());
         historyStack.push(currentState);
         
         // Limiter la taille de l'historique
         if (historyStack.size() > MAX_HISTORY_SIZE) {
-            Stack<PizzaState> newStack = new Stack<>();
+            Stack<List<Node>> newStack = new Stack<>();
             for (int i = 1; i < historyStack.size(); i++) {
                 newStack.push(historyStack.get(i));
             }
@@ -314,146 +251,18 @@ public class DragNDropTestController {
         }
     }
     
-    private PizzaState getCurrentState() {
-        PizzaState state = new PizzaState();
-        
-        // Sauvegarder les pâtes
-        for (Polygon dough : pizzaDoughs) {
-            PolygonData polygonData = new PolygonData();
-            polygonData.points.addAll(dough.getPoints());
-            polygonData.fillColor = dough.getFill().toString();
-            polygonData.strokeColor = dough.getStroke().toString();
-            polygonData.strokeWidth = dough.getStrokeWidth();
-            state.doughs.add(polygonData);
-        }
-        
-        // Sauvegarder les autres éléments
-        for (Node node : drawingArea.getChildren()) {
-            if (!pizzaDoughs.contains(node) && !pathPoints.contains(node)) {
-                NodeData nodeData = createNodeData(node);
-                if (nodeData != null) {
-                    state.nodes.add(nodeData);
-                }
-            }
-        }
-        
-        return state;
-    }
-    
-    private NodeData createNodeData(Node node) {
-        NodeData data = new NodeData();
-        data.translateX = node.getTranslateX();
-        data.translateY = node.getTranslateY();
-        data.rotation = node.getRotate();
-        
-        if (node instanceof Circle) {
-            Circle circle = (Circle) node;
-            data.type = "Circle";
-            data.x = circle.getCenterX();
-            data.y = circle.getCenterY();
-            data.radius = circle.getRadius();
-            data.fillColor = circle.getFill().toString();
-            data.strokeColor = circle.getStroke() != null ? circle.getStroke().toString() : null;
-            data.strokeWidth = circle.getStrokeWidth();
-        } else if (node instanceof Rectangle) {
-            Rectangle rect = (Rectangle) node;
-            data.type = "Rectangle";
-            data.x = rect.getX();
-            data.y = rect.getY();
-            data.width = rect.getWidth();
-            data.height = rect.getHeight();
-            data.fillColor = rect.getFill().toString();
-            data.strokeColor = rect.getStroke() != null ? rect.getStroke().toString() : null;
-            data.strokeWidth = rect.getStrokeWidth();
-        } else if (node instanceof Ellipse) {
-            Ellipse ellipse = (Ellipse) node;
-            data.type = "Ellipse";
-            data.x = ellipse.getCenterX();
-            data.y = ellipse.getCenterY();
-            data.width = ellipse.getRadiusX();
-            data.height = ellipse.getRadiusY();
-            data.fillColor = ellipse.getFill().toString();
-            data.strokeColor = ellipse.getStroke() != null ? ellipse.getStroke().toString() : null;
-            data.strokeWidth = ellipse.getStrokeWidth();
-        } else {
-            return null; // Type non supporté
-        }
-        
-        return data;
-    }
-    
-    private void restoreState(PizzaState state) {
+    private void restoreState(List<Node> state) {
         // Vider la zone de dessin
         drawingArea.getChildren().clear();
         pizzaDoughs.clear();
         
-        // Restaurer les pâtes
-        for (PolygonData polygonData : state.doughs) {
-            Polygon dough = new Polygon();
-            dough.getPoints().addAll(polygonData.points);
-            dough.setFill(Color.web(polygonData.fillColor));
-            if (polygonData.strokeColor != null) {
-                dough.setStroke(Color.web(polygonData.strokeColor));
-            }
-            dough.setStrokeWidth(polygonData.strokeWidth);
-            dough.setStrokeType(StrokeType.INSIDE);
-            dough.setEffect(new javafx.scene.effect.DropShadow(5, Color.web("#00000020")));
-            
-            pizzaDoughs.add(dough);
-            drawingArea.getChildren().add(dough);
-        }
-        
-        // Restaurer les autres éléments
-        for (NodeData nodeData : state.nodes) {
-            Node node = createNodeFromData(nodeData);
-            if (node != null) {
-                drawingArea.getChildren().add(node);
+        // Restaurer les éléments (version simplifiée)
+        for (Node node : state) {
+            drawingArea.getChildren().add(node);
+            if (node instanceof Polygon) {
+                pizzaDoughs.add((Polygon) node);
             }
         }
-    }
-    
-    private Node createNodeFromData(NodeData data) {
-        Node node = null;
-        
-        switch (data.type) {
-            case "Circle":
-                Circle circle = new Circle(data.x, data.y, data.radius);
-                circle.setFill(Color.web(data.fillColor));
-                if (data.strokeColor != null) {
-                    circle.setStroke(Color.web(data.strokeColor));
-                }
-                circle.setStrokeWidth(data.strokeWidth);
-                node = circle;
-                break;
-                
-            case "Rectangle":
-                Rectangle rect = new Rectangle(data.x, data.y, data.width, data.height);
-                rect.setFill(Color.web(data.fillColor));
-                if (data.strokeColor != null) {
-                    rect.setStroke(Color.web(data.strokeColor));
-                }
-                rect.setStrokeWidth(data.strokeWidth);
-                node = rect;
-                break;
-                
-            case "Ellipse":
-                Ellipse ellipse = new Ellipse(data.x, data.y, data.width, data.height);
-                ellipse.setFill(Color.web(data.fillColor));
-                if (data.strokeColor != null) {
-                    ellipse.setStroke(Color.web(data.strokeColor));
-                }
-                ellipse.setStrokeWidth(data.strokeWidth);
-                node = ellipse;
-                break;
-        }
-        
-        if (node != null) {
-            node.setTranslateX(data.translateX);
-            node.setTranslateY(data.translateY);
-            node.setRotate(data.rotation);
-        }
-        
-        return node;
     }
     
     private void clearDrawingArea() {
@@ -470,7 +279,7 @@ public class DragNDropTestController {
     private void returnToMenu() {
         try {
             // Ici vous devrez adapter le chemin vers votre FXML de menu principal
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MenuPrincipal.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Menu.fxml"));
             Parent root = loader.load();
             
             Stage stage = (Stage) quitterButton.getScene().getWindow();
@@ -489,8 +298,7 @@ public class DragNDropTestController {
         alert.showAndWait();
     }
     
-    // Méthodes existantes inchangées...
-    private boolean isSauce(String ingredient) {
+   private boolean isSauce(String ingredient) {
         return "TOMATE".equals(ingredient) || "CREME".equals(ingredient);
     }
     
@@ -501,18 +309,14 @@ public class DragNDropTestController {
             case "TOMATE":
                 // Sauce tomate - cercle rouge semi-transparent plus petit pour l'effet étalé
                 Circle tomato = new Circle(x, y, 8 + Math.random() * 4); // Taille variable
-                tomato.setFill(Color.web("#FF4500BB"));
-                tomato.setStroke(Color.web("#FF0000"));
-                tomato.setStrokeWidth(0.5);
+                tomato.setFill(Color.web("#FF4500"));
                 sauce = tomato;
                 break;
                 
             case "CREME":
                 // Crème - cercle blanc/beige semi-transparent plus petit pour l'effet étalé
                 Circle creme = new Circle(x, y, 7 + Math.random() * 3); // Taille variable
-                creme.setFill(Color.web("#FFFFFFCC"));
-                creme.setStroke(Color.web("#E6E6E6"));
-                creme.setStrokeWidth(0.5);
+                creme.setFill(Color.web("#FFFFFF"));
                 sauce = creme;
                 break;
         }
@@ -659,7 +463,7 @@ public class DragNDropTestController {
         if (isSauce(ingredient)) {
             drawingArea.setCursor(javafx.scene.Cursor.CROSSHAIR);
         } else {
-            drawingArea.setCursor(javafx.scene.Cursor.HAND);
+            drawingArea.setCursor(javafx.scene.Cursor.CROSSHAIR);
         }
     }
     

@@ -122,9 +122,6 @@
             <!-- Espaceur pour séparer les groupes de boutons -->
             <HBox HBox.hgrow="ALWAYS" />
             
-            <!-- Bouton Sauvegarder -->
-            <Button fx:id="sauvegarderButton" mnemonicParsing="false" onAction="#handleSauvegarderClick" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #90EE90; -fx-border-color: #32CD32; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Sauvegarder" />
-            
             <!-- Bouton Quitter -->
             <Button fx:id="quitterButton" mnemonicParsing="false" onAction="#handleQuitterClick" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #D3D3D3; -fx-border-color: #A9A9A9; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-font-weight: bold;" text="Quitter" />
          </children>
