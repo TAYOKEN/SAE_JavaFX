@@ -17,9 +17,18 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
+import javafx.scene.control.DialogPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.geometry.Insets;
+import javafx.scene.layout.HBox;
+import javafx.geometry.Pos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.Optional;
 
 public class DragNDropTestController {
     
@@ -47,7 +56,6 @@ public class DragNDropTestController {
     @FXML
     private Button chorizoButton;
     
-    // Nouveaux boutons d'action
     @FXML
     private Button retourButton;
     
@@ -66,22 +74,18 @@ public class DragNDropTestController {
     private List<Circle> pathPoints = new ArrayList<>();
     private List<Polygon> pizzaDoughs = new ArrayList<>();
     
-    // Variables pour le drag & drop
     private Node draggedNode = null;
     private double dragStartX, dragStartY;
     
-    // Variables pour l'application des sauces en glissant
     private boolean isDraggingSauce = false;
     private double lastSauceX = -1, lastSauceY = -1;
     
-    // Système d'historique pour l'annulation (version simplifiée)
     private Stack<List<Node>> historyStack = new Stack<>();
     private static final int MAX_HISTORY_SIZE = 20;
     
     @FXML
     private void initialize() {
         drawingArea.setStyle("-fx-background-color: #F4E3C1;");
-        // Sauvegarder l'état initial
         saveCurrentState();
     }
     
@@ -90,7 +94,7 @@ public class DragNDropTestController {
         resetButtonStyles();
         selectedIngredient = null;
         
-        drawingMode = !drawingMode;
+        drawingMode = !drawingMode; // Arrtez de faire les mecs mettez juste true ptdrrrrr
         
         if (drawingMode) {
             crayonButton.setStyle("-fx-background-color: #ffaa00; -fx-border-color: #ff8800; -fx-border-width: 3px; -fx-border-radius: 5px; -fx-background-radius: 5px;");
@@ -109,11 +113,9 @@ public class DragNDropTestController {
             clearPathPoints();
             addPoint(event.getX(), event.getY());
         } else if (selectedIngredient != null) {
-            // Vérifier si on clique sur une pâte existante
             if (isOnPizzaDough(event.getX(), event.getY())) {
-                saveCurrentState(); // Sauvegarder avant modification
+                saveCurrentState(); 
                 if (isSauce(selectedIngredient)) {
-                    // Pour les sauces, commencer le mode glisser
                     isDraggingSauce = true;
                     lastSauceX = event.getX();
                     lastSauceY = event.getY();
@@ -121,6 +123,17 @@ public class DragNDropTestController {
                 } else {
                     // Pour les autres ingrédients, placement normal
                     placeIngredient(event.getX(), event.getY());
+                }
+            } else {
+                // Afficher un message d'erreur stylisé si on clique en dehors de la pâte
+                if (pizzaDoughs.isEmpty()) {
+                    showStyledAlert("Aucune pâte à pizza", 
+                                  "Vous devez d'abord créer une pâte à pizza avec le crayon avant d'ajouter des ingrédients !",
+                                  Alert.AlertType.WARNING);
+                } else {
+                    showStyledAlert("Ingrédient mal placé", 
+                                  "Vous ne pouvez placer des ingrédients que sur la pâte à pizza !",
+                                  Alert.AlertType.WARNING);
                 }
             }
         } else {
@@ -140,20 +153,16 @@ public class DragNDropTestController {
         if (drawingMode && !currentPath.isEmpty()) {
             addPoint(event.getX(), event.getY());
         } else if (isDraggingSauce && selectedIngredient != null && isSauce(selectedIngredient)) {
-            // Appliquer la sauce pendant le glissement
             if (isOnPizzaDough(event.getX(), event.getY())) {
-                // Calculer la distance depuis le dernier point
                 double distance = Math.sqrt(Math.pow(event.getX() - lastSauceX, 2) + Math.pow(event.getY() - lastSauceY, 2));
                 
-                // Appliquer la sauce à intervalles réguliers pour créer un effet continu
-                if (distance > 8) { // Ajuster cette valeur pour contrôler la densité
+                if (distance > 8) { 
                     applySauceAt(event.getX(), event.getY());
                     lastSauceX = event.getX();
                     lastSauceY = event.getY();
                 }
             }
         } else if (draggedNode != null) {
-            // Déplacer l'ingrédient
             double deltaX = event.getX() - dragStartX;
             double deltaY = event.getY() - dragStartY;
             
@@ -176,21 +185,18 @@ public class DragNDropTestController {
             double distance = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
             
             if (distance <= 25) {
-                saveCurrentState(); // Sauvegarder avant de créer la pâte
+                saveCurrentState(); 
                 createPizzaDough();
             }
         } else if (isDraggingSauce) {
-            // Arrêter l'application de sauce
             isDraggingSauce = false;
             lastSauceX = -1;
             lastSauceY = -1;
         } else if (draggedNode != null) {
-            // Vérifier si l'ingrédient est toujours sur une pâte
             double centerX = draggedNode.getBoundsInParent().getCenterX();
             double centerY = draggedNode.getBoundsInParent().getCenterY();
             
             if (!isOnPizzaDough(centerX, centerY)) {
-                // Remettre l'ingrédient à sa position d'origine ou le supprimer
                 drawingArea.getChildren().remove(draggedNode);
             }
             
@@ -199,7 +205,6 @@ public class DragNDropTestController {
         }
     }
     
-    // Nouvelles méthodes pour les boutons d'action
     @FXML
     private void handleRetourClick() {
         if (historyStack.size() > 1) {
@@ -207,13 +212,13 @@ public class DragNDropTestController {
             List<Node> previousState = historyStack.peek();
             restoreState(previousState);
         } else {
-            showAlert("Information", "Aucune action à annuler.", Alert.AlertType.INFORMATION);
+            showStyledAlert("Information", "Aucune action à annuler.", Alert.AlertType.INFORMATION);
         }
     }
     
     @FXML
     private void handleToutSupprimerClick() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = createStyledAlert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Tout supprimer");
         alert.setContentText("Êtes-vous sûr de vouloir supprimer toute la pizza ?");
@@ -226,7 +231,7 @@ public class DragNDropTestController {
     
     @FXML
     private void handleQuitterClick() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = createStyledAlert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Quitter");
         alert.setContentText("Voulez-vous vraiment quitter ?");
@@ -236,12 +241,51 @@ public class DragNDropTestController {
         }
     }
     
-    // Méthodes utilitaires pour la gestion de l'historique (simplifiée)
+    private Alert createStyledAlert(Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setStyle("-fx-background-color: #F4E3C1; -fx-border-color: #ffaa00; -fx-border-width: 3px; -fx-border-radius: 10px;");
+        
+        // Styliser les boutons selon le type d'alerte
+        for (ButtonType buttonType : dialogPane.getButtonTypes()) {
+            Button button = (Button) dialogPane.lookupButton(buttonType);
+            if (button != null) {
+                if (buttonType == ButtonType.OK) {
+                    if (alertType == Alert.AlertType.ERROR || alertType == Alert.AlertType.WARNING) {
+                        // Bouton rouge pour les erreurs/avertissements
+                        button.setStyle("-fx-background-color: #FF6B6B; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-padding: 8 16;");
+                    } else if (alertType == Alert.AlertType.CONFIRMATION) {
+                        // Bouton vert pour les confirmations
+                        button.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-padding: 8 16;");
+                    } else {
+                        // Bouton bleu pour les informations
+                        button.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-padding: 8 16;");
+                    }
+                } else if (buttonType == ButtonType.CANCEL) {
+                    // Bouton gris pour annuler
+                    button.setStyle("-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-padding: 8 16;");
+                }
+            }
+        }
+        
+        return alert;
+    }
+    
+    // fonc pour afficher des alertes 
+    private void showStyledAlert(String title, String message, Alert.AlertType alertType) {
+        Alert alert = createStyledAlert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    
+    // Méthodes utilitaires pour la gestion de l'historique [POUR LE BOUTON RETOUR]
     private void saveCurrentState() {
         List<Node> currentState = new ArrayList<>(drawingArea.getChildren());
         historyStack.push(currentState);
         
-        // Limiter la taille de l'historique
         if (historyStack.size() > MAX_HISTORY_SIZE) {
             Stack<List<Node>> newStack = new Stack<>();
             for (int i = 1; i < historyStack.size(); i++) {
@@ -250,13 +294,11 @@ public class DragNDropTestController {
             historyStack = newStack;
         }
     }
-    
+    //[BOUTON RETOUR]
     private void restoreState(List<Node> state) {
-        // Vider la zone de dessin
         drawingArea.getChildren().clear();
         pizzaDoughs.clear();
         
-        // Restaurer les éléments (version simplifiée)
         for (Node node : state) {
             drawingArea.getChildren().add(node);
             if (node instanceof Polygon) {
@@ -264,7 +306,7 @@ public class DragNDropTestController {
             }
         }
     }
-    
+    // [TOUT SUPPRIMER]
     private void clearDrawingArea() {
         drawingArea.getChildren().clear();
         pizzaDoughs.clear();
@@ -278,7 +320,6 @@ public class DragNDropTestController {
     
     private void returnToMenu() {
         try {
-            // Ici vous devrez adapter le chemin vers votre FXML de menu principal
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Menu.fxml"));
             Parent root = loader.load();
             
@@ -286,16 +327,8 @@ public class DragNDropTestController {
             stage.setScene(new Scene(root));
             stage.show();
         } catch (Exception e) {
-            showAlert("Erreur", "Impossible de retourner au menu : " + e.getMessage(), Alert.AlertType.ERROR);
+            showStyledAlert("Erreur", "Impossible de retourner au menu : " + e.getMessage(), Alert.AlertType.ERROR);
         }
-    }
-    
-    private void showAlert(String title, String message, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
     
    private boolean isSauce(String ingredient) {
@@ -307,15 +340,13 @@ public class DragNDropTestController {
         
         switch (selectedIngredient) {
             case "TOMATE":
-                // Sauce tomate - cercle rouge semi-transparent plus petit pour l'effet étalé
-                Circle tomato = new Circle(x, y, 8 + Math.random() * 4); // Taille variable
+                Circle tomato = new Circle(x, y, 8 + Math.random() * 4);
                 tomato.setFill(Color.web("#FF4500"));
                 sauce = tomato;
                 break;
                 
             case "CREME":
-                // Crème - cercle blanc/beige semi-transparent plus petit pour l'effet étalé
-                Circle creme = new Circle(x, y, 7 + Math.random() * 3); // Taille variable
+                Circle creme = new Circle(x, y, 7 + Math.random() * 3); 
                 creme.setFill(Color.web("#FFFFFF"));
                 sauce = creme;
                 break;

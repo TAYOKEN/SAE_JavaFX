@@ -113,7 +113,7 @@ public class LoginPageController {
      */
     private void loadMainPage() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/Menu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/MainApp.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) connexionButton.getScene().getWindow();
             stage.setScene(new Scene(root));
